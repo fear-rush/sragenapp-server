@@ -1,4 +1,3 @@
-// IMPORT PACKAGES
 import express from "express";
 import easyinvoice from "easyinvoice";
 import fs from "fs";
@@ -26,7 +25,7 @@ app.post("/send-invoice", (req, res) => {
 
   let data = {
     currency: "IDR",
-    taxNotation: "vat", //or gst
+    // taxNotation: "vat", //or gst
     marginTop: 25,
     marginRight: 25,
     marginLeft: 25,
@@ -42,6 +41,10 @@ app.post("/send-invoice", (req, res) => {
     },
     client: {
       company: req.body.username,
+      address: req.body.address,
+      zip: "",
+      city: "",
+      country: "",
     },
     invoiceNumber: req.body.paymentNumber,
     invoiceDate: date,
